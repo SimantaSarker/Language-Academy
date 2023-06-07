@@ -13,8 +13,8 @@ import { AiFillHome, AiOutlineMenu, AiTwotoneShopping } from "react-icons/ai";
 
 const Dashboard = () => {
   //------------TODO load data from server to have dynamic isAdmin based on Data--------
-  // const isAdmin = true;
-   const isInstructors=false;
+  const isAdmin = true;
+  //  const isInstructors=false;
 
   return (
     <div className="drawer lg:drawer-open">
@@ -31,14 +31,14 @@ const Dashboard = () => {
       </div>
       <div className="drawer-side">
         <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
-        <ul className="menu p-4 w-80 h-full bg-base-200 text-base-content">
+        <ul className="menu p-4 w-80 h-full bg-gray-400 text-base-content border-8  drop-shadow-7xl text-xl">
           {/* Sidebar content here */}
 
-          {/* {isAdmin ? (
+          {isAdmin ? (
             <>
               <li>
-                <Link to="/dashboard/manageClasses">
-                  <AiFillHome></AiFillHome>MangeClasses
+                <Link to="/dashboard/manageClasses" className="animate-pulse">
+                  <AiFillHome></AiFillHome>Mange Classes
                 </Link>
               </li>
         
@@ -62,9 +62,9 @@ const Dashboard = () => {
                 </Link>
               </li>
             </>
-          )} */}
+          )}
 
-          {isInstructors ? (
+          {/* {isInstructors ? (
             <>
               <li>
                 <Link to="/dashboard/addClasses">
@@ -93,7 +93,7 @@ const Dashboard = () => {
               </li>
           
             </>
-          )}
+          )} */}
 
           <div className="divider"></div>
 

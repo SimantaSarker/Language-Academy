@@ -3,6 +3,7 @@ import SocialLogin from "../Shared/SocialLogin";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../provider/AuthProvider";
 import { useContext, useState } from "react";
+import Swal from "sweetalert2";
 
 const Login = () => {
 
@@ -29,6 +30,13 @@ const Login = () => {
     .then((result)=>{
       const user=result.user;
       console.log(user);
+      Swal.fire({
+        position: 'center',
+        icon: 'success',
+        title: 'You are vaild user',
+        showConfirmButton: false,
+        timer: 1500
+      })
       navigate("/");
       reset();
     })

@@ -2,12 +2,13 @@ import { useForm } from "react-hook-form";
 import SocialLogin from "../Shared/SocialLogin";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../provider/AuthProvider";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import Swal from "sweetalert2";
 
 const SignUp = () => {
   const { createUser, updateUserProfile } = useContext(AuthContext);
   const navigate = useNavigate();
+ const [error,setError]=useState("");
 
   const {
     register,
@@ -18,6 +19,7 @@ const SignUp = () => {
   } = useForm();
 
   const onSubmit = (data) => {
+    setError("");
     const email = data.email;
     const password = data.password;
     const name = data.name;
@@ -31,9 +33,6 @@ const SignUp = () => {
         updateUserProfile(data.name, data.photo)
           .then(() => {
             const saveUser = { name: data.name, email: data.email };
-            console.log(saveUser);
-
-
             fetch('http://localhost:5000/users',{
               method:"POST",
               headers:{
@@ -42,12 +41,14 @@ const SignUp = () => {
               body:JSON.stringify(saveUser)
             })
             .then((res)=>res.json()).then((data)=>{
+              console.log(data)
               if(data.insertedId)
               {
+               
                 Swal.fire({
                   position: 'center',
                   icon: 'success',
-                  title: 'User added successfullu',
+                  title: 'User added Successfully',
                   showConfirmButton: false,
                   timer: 1500
                 })
@@ -62,6 +63,7 @@ const SignUp = () => {
       })
       .catch((error) => {
         console.log(error.message);
+        setError(error.message)
       });
   };
 
@@ -175,6 +177,7 @@ const SignUp = () => {
               {errors.confirmPassword && (
                 <p>{errors.confirmPassword.message}</p>
               )}
+              <p className="text-red-300">{error}</p>
             </div>
 
             <div className="form-control mt-6">
