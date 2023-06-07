@@ -1,11 +1,11 @@
 import { Link, Outlet } from "react-router-dom";
 import {
-  FaCartPlus,
-  FaCalendarAlt,
+  // FaCartPlus,
+  // FaCalendarAlt,
   FaHome,
-  FaUtensils,
+  // FaUtensils,
   FaUsers,
-  FaBook,
+  // FaBook,
 } from "react-icons/fa";
 import { BsWalletFill } from "react-icons/bs";
 import { GrMail } from "react-icons/gr";
@@ -13,7 +13,8 @@ import { AiFillHome, AiOutlineMenu, AiTwotoneShopping } from "react-icons/ai";
 
 const Dashboard = () => {
   //------------TODO load data from server to have dynamic isAdmin based on Data--------
-  const isAdmin = true;
+  // const isAdmin = true;
+   const isInstructors=false;
 
   return (
     <div className="drawer lg:drawer-open">
@@ -32,6 +33,67 @@ const Dashboard = () => {
         <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
         <ul className="menu p-4 w-80 h-full bg-base-200 text-base-content">
           {/* Sidebar content here */}
+
+          {/* {isAdmin ? (
+            <>
+              <li>
+                <Link to="/dashboard/manageClasses">
+                  <AiFillHome></AiFillHome>MangeClasses
+                </Link>
+              </li>
+        
+              <li>
+                <Link to="/dashboard/manageUsers">
+                  <FaUsers></FaUsers> Manage Users
+                </Link>
+              </li>
+            </>
+          ) : (
+            <>
+              <li>
+                <Link to="/dashboard/selectedClasses">
+                  <AiFillHome></AiFillHome>Selected Classes
+                </Link>
+              </li>
+
+              <li>
+                <Link to="/dashboard/paymentHistory">
+                  <BsWalletFill></BsWalletFill> Payment History
+                </Link>
+              </li>
+            </>
+          )} */}
+
+          {isInstructors ? (
+            <>
+              <li>
+                <Link to="/dashboard/addClasses">
+                  <AiFillHome></AiFillHome>Add Classes
+                </Link>
+              </li>
+              <li>
+                <Link to="/dashboard/myClasses">
+                  <FaUsers></FaUsers> My Classes
+                </Link>
+              </li>
+            </>
+          ) : (
+            <>
+           
+           <li>
+                <Link to="/dashboard/selectedClasses">
+                  <AiFillHome></AiFillHome>Selected Classes
+                </Link>
+              </li>
+
+              <li>
+                <Link to="/dashboard/paymentHistory">
+                  <BsWalletFill></BsWalletFill> Payment History
+                </Link>
+              </li>
+          
+            </>
+          )}
 
           <div className="divider"></div>
 
