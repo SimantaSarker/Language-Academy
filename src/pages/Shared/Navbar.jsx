@@ -5,18 +5,16 @@ import { useContext } from "react";
 const Navbar = () => {
   const { LogOut, user } = useContext(AuthContext);
 
-  
   const handleLogOut = () => {
     LogOut()
       .then(() => {})
       .catch((error) => {
         console.log(error.message);
       });
-  }
-  
+  };
 
   return (
-   <div className="navbar bg-slate-200 z-10 sticky top-0 rounded home" >
+    <div className="navbar bg-slate-200 z-10 sticky top-0 rounded home">
       <div className="navbar-start">
         <div className="dropdown">
           <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -43,19 +41,13 @@ const Navbar = () => {
               <Link to="/">Home</Link>
             </li>
             <li>
-              <Link to="/allToys">All Toys</Link>
+              <Link to="/instructors">Instructors</Link>
             </li>
-        {
-          user?<>    <li>
-          <Link to="/myToys">My Toys</Link>
-        </li>
-        <li>
-          <Link to="/addToys">Add Toys</Link>
-        </li></>:""
-        }
-
             <li>
-              <Link to="/blog">Blog</Link>
+              <Link to="/classes">Classes</Link>
+            </li>
+            <li>
+              <Link to="/dashboard">Dashboard</Link>
             </li>
           </ul>
         </div>
@@ -69,10 +61,7 @@ const Navbar = () => {
             </div>
           </label>
           <a className="btn btn-ghost normal-case text-2xl"> Universe</a>
-
         </div>
-     
-      
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">
@@ -80,31 +69,21 @@ const Navbar = () => {
             <Link to="/">Home</Link>
           </li>
           <li>
-            <Link to="/allToys">All Toys</Link>
-          </li>
-        {
-          user?<>
-            <li>
-            <Link to="/myToys">My Toys</Link>
+            <Link to="/instructors">Instructors</Link>
           </li>
           <li>
-            <Link to="/addToys">Add Toys</Link>
-          </li></>:""
-        }
-
+            <Link to="/classes">Classes</Link>
+          </li>
           <li>
-            <Link to="/blog">Blog</Link>
+            <Link to="/dashboard">Dashboard</Link>
           </li>
         </ul>
       </div>
       {user ? (
         <div className="navbar-end">
           <label tabIndex={0} className=" btn-circle avatar">
-            <div className="w-10 rounded-full"  title={user?.displayName}>
-              <img
-                src={user?.photoURL}
-                className="object-cover"
-              />
+            <div className="w-10 rounded-full" title={user?.displayName}>
+              <img src={user?.photoURL} className="object-cover" />
             </div>
           </label>
           <div>
