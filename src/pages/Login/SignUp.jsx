@@ -8,46 +8,38 @@ const SignUp = () => {
   const { createUser, updateUserProfile } = useContext(AuthContext);
   const navigate = useNavigate();
 
-
   const {
     register,
     handleSubmit,
     reset,
+    getValues,
     formState: { errors },
   } = useForm();
 
-
-
   const onSubmit = (data) => {
-    const email=data.email;
-    const password=data.password;
-    const name=data.name;
-    const photo=data.photo;
-    createUser(email,password)
+    const email = data.email;
+    const password = data.password;
+    const name = data.name;
+    const photo = data.photo;
+    createUser(email, password)
       .then((result) => {
         const loggedUser = result.user;
         loggedUser.displayName = name;
         loggedUser.photoURL = photo;
 
-        updateUserProfile(data.name,data.photo)
+        updateUserProfile(data.name, data.photo)
           .then(() => {
-            const saveUser={name:data.name,email:data.email};
+            const saveUser = { name: data.name, email: data.email };
             console.log(saveUser);
             navigate("/");
             reset();
-         
           })
           .catch((error) => console.log(error));
       })
       .catch((error) => {
         console.log(error.message);
       });
-  
   };
-
-
-
-
 
   return (
     <div className="hero min-h-screen bg-base-200">
@@ -114,8 +106,7 @@ const SignUp = () => {
                   required: true,
                   minLength: 6,
                   maxLength: 20,
-                  pattern:
-                    /(?=.*?[A-Z])(?=.*?[#?!@$%^&*-])/,
+                  pattern: /(?=.*?[A-Z])(?=.*?[#?!@$%^&*-])/,
                 })}
                 placeholder="password"
                 className="input input-bordered"
@@ -138,11 +129,30 @@ const SignUp = () => {
 
               {errors.password?.type === "pattern" && (
                 <span className="text-red-900">
-                  At least one Capital  English letter, At least one special
+                  At least one Capital English letter, At least one special
                   character
                 </span>
               )}
             </div>
+
+            <div className="form-control">
+              <label className="label">
+              <span className="label-text">Confirm Password</span>
+                </label>
+              <input
+               className="input input-bordered"
+                type="password"
+                {...register("confirmPassword", {
+                  required: "This field is required",
+                  validate: (value) =>
+                    value === getValues("password") || "Passwords do not match",
+                })}
+              />
+              {errors.confirmPassword && (
+                <p>{errors.confirmPassword.message}</p>
+              )}
+            </div>
+
             <div className="form-control mt-6">
               <input type="submit" value="SignUp" className="btn btn-primary" />
             </div>
