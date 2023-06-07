@@ -12,8 +12,19 @@ const SocialLogin = () => {
     googleSignIn().then((result)=>{
       const loggedInUser=result.user;
       const saveUser={name:loggedInUser.displayName,email:loggedInUser.email};
-      console.log(saveUser);
-      navigate("/");
+      fetch("http://localhost:5000/users",{
+        method:"POST",
+        headers:{
+          "content-type":"application/json"
+        },
+        body:JSON.stringify(saveUser)
+      })
+        .then((res) => res.json())
+        .then(() => {
+          navigate("/");
+          
+        });
+    
 
     }).catch((error)=>{
       console.log(error.message)
