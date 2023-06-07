@@ -112,11 +112,7 @@ const Dashboard = () => {
               <AiTwotoneShopping></AiTwotoneShopping>Classes
             </Link>
           </li>
-          <li>
-            <Link>
-              <GrMail></GrMail>Contact
-            </Link>
-          </li>
+    
         </ul>
       </div>
     </div>
