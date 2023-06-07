@@ -1,10 +1,11 @@
+import Language from "../Language/Language";
 import Slider from "../Slider/Slider";
 
 const Home = () => {
   return (
     <div>
       <Slider></Slider>
-      <h1>Home</h1>
+      <Language></Language>
     </div>
   );
 };
