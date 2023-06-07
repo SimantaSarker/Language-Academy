@@ -3,6 +3,7 @@ import SocialLogin from "../Shared/SocialLogin";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../provider/AuthProvider";
 import { useContext } from "react";
+import Swal from "sweetalert2";
 
 const SignUp = () => {
   const { createUser, updateUserProfile } = useContext(AuthContext);
@@ -31,8 +32,31 @@ const SignUp = () => {
           .then(() => {
             const saveUser = { name: data.name, email: data.email };
             console.log(saveUser);
-            navigate("/");
-            reset();
+
+
+            fetch('http://localhost:5000/users',{
+              method:"POST",
+              headers:{
+                "content-type":"application/json"
+              },
+              body:JSON.stringify(saveUser)
+            })
+            .then((res)=>res.json()).then((data)=>{
+              if(data.insertedId)
+              {
+                Swal.fire({
+                  position: 'center',
+                  icon: 'success',
+                  title: 'User added successfullu',
+                  showConfirmButton: false,
+                  timer: 1500
+                })
+                navigate("/");
+                reset();
+              }
+            })
+
+          
           })
           .catch((error) => console.log(error));
       })
