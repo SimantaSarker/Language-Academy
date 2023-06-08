@@ -1,13 +1,19 @@
 import { useQuery } from "@tanstack/react-query";
 
+import Swal from "sweetalert2";
+
 const ManageUsers = () => {
-  const { data: users = [] } = useQuery(["users"], async () => {
+
+ 
+
+
+
+  const { data: users = [],refetch } = useQuery(["users"], async () => {
     const res = await fetch("http://localhost:5000/users");
     return res.json();
   });
 
   const handleAdmin = (user, id) => {
-    console.log(user)
     if (id === 1) {
       console.log("Admin", user);
       user.adminId = id;
@@ -19,7 +25,20 @@ const ManageUsers = () => {
         body: JSON.stringify(user),
       })
         .then((res) => res.json())
-        .then((data) => console.log(data));
+        .then((data) => {
+
+          if (data.modifiedCount) {
+            refetch();
+            Swal.fire({
+              position: 'top-end',
+              icon: 'success',
+              title: `${user.name} is Admin Now`,
+              showConfirmButton: false,
+              timer: 1500
+            })
+          }
+        
+        });
     }
 
     if (id === 2) {
@@ -32,7 +51,19 @@ const ManageUsers = () => {
         body: JSON.stringify(user),
       })
         .then((res) => res.json())
-        .then((data) => console.log(data));
+        .then((data) => {
+          if (data.modifiedCount) {
+            refetch();
+            Swal.fire({
+              position: 'top-end',
+              icon: 'success',
+              title: `${user.name} is Instructors Now`,
+              showConfirmButton: false,
+              timer: 1500
+            });
+           
+          }
+        });
     }
   };
 
@@ -59,10 +90,12 @@ const ManageUsers = () => {
                 <td>{user.email}</td>
                 <th className="flex items-center justify-between">
                   {user.role === "admin" ? (
-                    "admin"
+             
+                    <button className="btn btn-success" disabled>Admin</button>
                   ) : (
                     <button
                       className="btn btn-active btn-accent"
+                     
                       onClick={() => handleAdmin(user, 1)}
                     >
                       Admin
@@ -70,12 +103,15 @@ const ManageUsers = () => {
                   )}
                 </th>
                 <th>
- 
                   {user.role === "instructors" ? (
-                    "instructors"
+          
+                    <button className="btn btn-success" disabled>Instructors</button>
+                    
+                    
                   ) : (
                     <button
                       className="btn btn-active btn-accent"
+                   
                       onClick={() => handleAdmin(user, 2)}
                     >
                       Instructors
