@@ -31,7 +31,7 @@ const Dashboard = () => {
   return (
     <div className="drawer lg:drawer-open">
       <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
-      <div className="drawer-content flex flex-col items-center justify-center">
+      <div className="drawer-content flex flex-col items-center justify-center  ">
         {/* Page content here */}
         <label
           htmlFor="my-drawer-2"
@@ -43,13 +43,13 @@ const Dashboard = () => {
       </div>
       <div className="drawer-side">
         <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
-        <ul className="menu p-4 w-80 h-full bg-gray-400 text-base-content border-8  drop-shadow-7xl text-xl">
+        <ul className="menu p-4 w-80 h-full  drop-shadow-7xl text-xl flex justify-center bg-gradient-to-r from-cyan-200 to-blue-100">
           {/* Sidebar content here */}
 
           {isVerify == "admin" ? (
             <>
               <li>
-                <Link to="/dashboard/manageClasses" className="animate-pulse">
+                <Link to="/dashboard/manageClasses" className="hover:animate-spin">
                   <AiFillHome></AiFillHome>Mange Classes
                 </Link>
               </li>
@@ -68,12 +68,12 @@ const Dashboard = () => {
             <>
               <li>
                 <Link to="/dashboard/addClasses">
-                  <AiFillHome></AiFillHome>Add Classes
+                  <AiFillHome className="transition transform hover:-translate-y-1 motion-reduce:transition-none motion-reduce:hover:transform-none "></AiFillHome>Add Classes
                 </Link>
               </li>
               <li>
                 <Link to="/dashboard/myClasses">
-                  <FaUsers></FaUsers> My Classes
+                  <FaUsers className="transition transform hover:-translate-y-1 motion-reduce:transition-none motion-reduce:hover:transform-none "></FaUsers> My Classes
                 </Link>
               </li>
             </>
@@ -85,13 +85,13 @@ const Dashboard = () => {
             <>
               <li>
                 <Link to="/dashboard/selectedClasses">
-                  <AiFillHome></AiFillHome>Selected Classes
+                  <AiFillHome className="transition transform hover:-translate-y-1 motion-reduce:transition-none motion-reduce:hover:transform-none "></AiFillHome>Selected Classes
                 </Link>
               </li>
 
               <li>
                 <Link to="/dashboard/paymentHistory">
-                  <BsWalletFill></BsWalletFill> Payment History
+                  <BsWalletFill className="transition transform hover:-translate-y-1 motion-reduce:transition-none motion-reduce:hover:transform-none "></BsWalletFill> Payment History
                 </Link>
               </li>
             </>
@@ -103,12 +103,12 @@ const Dashboard = () => {
 
           <li>
             <Link to="/">
-              <FaHome></FaHome>Home
+              <FaHome className="transition transform hover:-translate-y-1 motion-reduce:transition-none motion-reduce:hover:transform-none "></FaHome>Home
             </Link>
           </li>
           <li>
             <Link to="/instructors">
-              <AiOutlineMenu></AiOutlineMenu> Instructors
+              <AiOutlineMenu ></AiOutlineMenu> Instructors
             </Link>
           </li>
           <li>
