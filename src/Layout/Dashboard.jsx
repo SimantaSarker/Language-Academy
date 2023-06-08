@@ -9,12 +9,24 @@ import {
 } from "react-icons/fa";
 import { BsWalletFill } from "react-icons/bs";
 import { AiFillHome, AiOutlineMenu, AiTwotoneShopping } from "react-icons/ai";
-import useAdmin from "../hooks/useAdmin";
+
+import { useQuery } from "@tanstack/react-query";
+import { useContext } from "react";
+import { AuthContext } from "../provider/AuthProvider";
+import useAxiosSecure from "../hooks/useAxiosSecure";
 
 const Dashboard = () => {
-  //------------TODO load data from server to have dynamic isAdmin based on Data--------
+  const { user } = useContext(AuthContext);
+  const [axiosSecure] = useAxiosSecure();
 
-  const [isAdmin,]=useAdmin()
+  const { data: isVerify } = useQuery({
+    queryKey: ["isVerify", user?.email],
+    enabled: !!user?.email && !!localStorage.getItem("access-token"),
+    queryFn: async () => {
+      const response = await axiosSecure.get(`/users/verify/${user?.email}`);
+      return response.data.role;
+    },
+  });
 
   return (
     <div className="drawer lg:drawer-open">
@@ -34,14 +46,14 @@ const Dashboard = () => {
         <ul className="menu p-4 w-80 h-full bg-gray-400 text-base-content border-8  drop-shadow-7xl text-xl">
           {/* Sidebar content here */}
 
-          {isAdmin ? (
+          {isVerify == "admin" ? (
             <>
               <li>
                 <Link to="/dashboard/manageClasses" className="animate-pulse">
                   <AiFillHome></AiFillHome>Mange Classes
                 </Link>
               </li>
-        
+
               <li>
                 <Link to="/dashboard/manageUsers">
                   <FaUsers></FaUsers> Manage Users
@@ -49,22 +61,10 @@ const Dashboard = () => {
               </li>
             </>
           ) : (
-            <>
-              <li>
-                <Link to="/dashboard/selectedClasses">
-                  <AiFillHome></AiFillHome>Selected Classes
-                </Link>
-              </li>
-
-              <li>
-                <Link to="/dashboard/paymentHistory">
-                  <BsWalletFill></BsWalletFill> Payment History
-                </Link>
-              </li>
-            </>
+            ""
           )}
 
-          {/* {isInstructors ? (
+          {isVerify === "instructors" ? (
             <>
               <li>
                 <Link to="/dashboard/addClasses">
@@ -78,9 +78,12 @@ const Dashboard = () => {
               </li>
             </>
           ) : (
+            ""
+          )}
+
+          {isVerify === "student" ? (
             <>
-           
-           <li>
+              <li>
                 <Link to="/dashboard/selectedClasses">
                   <AiFillHome></AiFillHome>Selected Classes
                 </Link>
@@ -91,9 +94,10 @@ const Dashboard = () => {
                   <BsWalletFill></BsWalletFill> Payment History
                 </Link>
               </li>
-          
             </>
-          )} */}
+          ) : (
+            ""
+          )}
 
           <div className="divider"></div>
 
@@ -112,7 +116,6 @@ const Dashboard = () => {
               <AiTwotoneShopping></AiTwotoneShopping>Classes
             </Link>
           </li>
-    
         </ul>
       </div>
     </div>

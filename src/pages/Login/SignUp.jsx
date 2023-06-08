@@ -41,7 +41,6 @@ const SignUp = () => {
               body:JSON.stringify(saveUser)
             })
             .then((res)=>res.json()).then((data)=>{
-              console.log(data)
               if(data.insertedId)
               {
                
@@ -62,7 +61,6 @@ const SignUp = () => {
           .catch((error) => console.log(error));
       })
       .catch((error) => {
-        console.log(error.message);
         setError(error.message)
       });
   };

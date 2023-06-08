@@ -22,10 +22,8 @@ const Login = () => {
 
 
   const onSubmit = (data) => {
-    console.log(data)
     const email=data.email;
     const password=data.password;
-    console.log(email,password);
     signIn(email,password)
     .then((result)=>{
       const user=result.user;
