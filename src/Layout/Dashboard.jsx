@@ -8,13 +8,13 @@ import {
   // FaBook,
 } from "react-icons/fa";
 import { BsWalletFill } from "react-icons/bs";
-import { GrMail } from "react-icons/gr";
 import { AiFillHome, AiOutlineMenu, AiTwotoneShopping } from "react-icons/ai";
+import useAdmin from "../hooks/useAdmin";
 
 const Dashboard = () => {
   //------------TODO load data from server to have dynamic isAdmin based on Data--------
-  const isAdmin = true;
-  //  const isInstructors=false;
+
+  const [isAdmin,]=useAdmin()
 
   return (
     <div className="drawer lg:drawer-open">
