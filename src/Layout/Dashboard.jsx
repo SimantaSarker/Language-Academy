@@ -49,7 +49,7 @@ const Dashboard = () => {
           {isVerify == "admin" ? (
             <>
               <li>
-                <Link to="/dashboard/manageClasses" className="hover:animate-spin">
+                <Link to="/dashboard/manageClasses">
                   <AiFillHome></AiFillHome>Mange Classes
                 </Link>
               </li>

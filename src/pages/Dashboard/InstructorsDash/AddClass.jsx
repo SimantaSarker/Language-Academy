@@ -1,9 +1,12 @@
 import { useContext } from "react";
 import { AuthContext } from "../../../provider/AuthProvider";
 import "../InstructorsDash/MyClasses";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import Swal from "sweetalert2";
 
 const AddClass = () => {
   const { user } = useContext(AuthContext);
+  const [axiosSecure]=useAxiosSecure()
 
   const handleAddClass=(event)=>{
     event.preventDefault();
@@ -12,11 +15,26 @@ const AddClass = () => {
     const image=form.image.value;
     const seats=form.availableSeats.value;
     const price=form.price.value;
+    const instructorName=user?.displayName;
+    const instructorEmail=user?.email;
     const status="pending";
     const addedClasses={
-      courseName,image,seats,price,status
+      courseName,instructorName,instructorEmail,image,seats,price,status
     }
-    console.log(addedClasses)
+
+    axiosSecure.post("/courses",addedClasses)
+    .then((data)=>{
+      if(data.data.insertedId)
+      {
+        Swal.fire(
+          'Hei!!!!',
+          'Course Added successfully!',
+          'success'
+        )
+      }
+      form.reset();
+      
+    })
 
 
   }
@@ -33,6 +51,7 @@ const AddClass = () => {
               <input
                 type="text"
                 name="courseName"
+                required
                 placeholder="Enter Class Name"
                 className="input input-bordered text-lg"
               />
@@ -44,6 +63,7 @@ const AddClass = () => {
               <input
                 type="text"
                 name="image"
+                required
                 placeholder="Enter Class Image"
                 className="input input-bordered text-lg"
               />
@@ -68,7 +88,7 @@ const AddClass = () => {
               </label>
               <input
                 type="email"
-                name="photo"
+                name="email"
                 readOnly
                 placeholder={`${user?.email}`}
                 className="input input-bordered text-lg"
@@ -85,6 +105,7 @@ const AddClass = () => {
               <input
                 type="text"
                 name="availableSeats"
+                required
                 placeholder="Enter Available Seats"
                 className="input input-bordered text-lg"
               />
@@ -96,6 +117,7 @@ const AddClass = () => {
               <input
                 type="text"
                 name="price"
+                required
                 placeholder="Enter Price"
                 className="input input-bordered text-lg"
               />

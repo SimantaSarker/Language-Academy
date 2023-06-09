@@ -69,9 +69,7 @@ const ManageUsers = () => {
 
   return (
     <div className="w-full max-w-7xl border-8">
-      <h1 className="text-5xl text-blue-400 text-center">
-        Manage Users: {users.length}
-      </h1>
+   
 
       <div className="overflow-x-auto font-semibold">
         <table className="table">
