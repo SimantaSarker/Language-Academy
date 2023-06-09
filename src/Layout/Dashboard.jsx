@@ -43,7 +43,7 @@ const Dashboard = () => {
       </div>
       <div className="drawer-side">
         <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
-        <ul className="menu p-4 w-80 h-full  drop-shadow-7xl text-xl flex justify-center bg-gradient-to-r from-cyan-200 to-blue-100">
+        <ul className="menu p-4 w-70 h-full  drop-shadow-7xl text-xl flex justify-center bg-gradient-to-r from-cyan-200 to-blue-100">
           {/* Sidebar content here */}
 
           {isVerify == "admin" ? (

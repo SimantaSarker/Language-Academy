@@ -1,21 +1,50 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const ManageClasses = () => {
   const [axiosSecure] = useAxiosSecure();
+  // const [disable, setDisabled] = useState(false);
 
-  const { data: courses = [] } = useQuery(["courses"], async () => {
+  const { data: courses = [],refetch } = useQuery(["courses"], async () => {
     const res = await axiosSecure("/courses");
     return res.data;
   });
 
-  console.log(courses);
+  const handleApproveDeny = (status, id) => {
+
+
+    fetch(`http://localhost:5000/courses/${id}`, {
+      method: "PATCH",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify({status}),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data)
+
+        if (data.modifiedCount) {
+          refetch();
+          Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: "Successfully updated status",
+            showConfirmButton: false,
+            timer: 1500
+          })
+        }
+      
+      });
+
+  
+  };
 
   return (
-    <div>
-      {/* <h1>Manage Classes:{courses.length}</h1> */}
-
+    <div className="w-full">
+   
       <div className="overflow-x-auto">
         <table className="table">
           <thead>
@@ -50,16 +79,54 @@ const ManageClasses = () => {
                 <td>{course.instructorEmail}</td>
                 <td>{course.seats}</td>
                 <td>{course.price}</td>
-                <td>
-                  <button className="btn btn-info">{course.status}</button>
-                </td>
+                
+            {
+              course.status=="approve" || course.status=="deny"? <td>
+              <button className="btn btn-info">{course.status}</button>
+            </td>:<td><button className="btn btn-info">{course.status}</button></td>
+            }
 
+              {
+                course.status==="approve" || course.status=="deny"?  
+                <>
                 <td>
-                  <button className="btn btn-success">Approve</button>
-                </td>
-                <td>
-                  <button className="btn btn-error">Deny</button>
-                </td>
+                <button
+                  className="btn btn-success" disabled
+                  onClick={() => handleApproveDeny("approve", course._id)}
+                >
+                  Approve
+                </button>
+              </td>
+
+              <td>
+                <button
+                  className="btn btn-error" disabled
+                  onClick={() => handleApproveDeny("deny", course._id)}
+                >
+                  Deny
+                </button>
+              </td>
+              </>
+              :      <>
+              <td>
+              <button
+                className="btn btn-success"
+                onClick={() => handleApproveDeny("approve", course._id)}
+              >
+                Approve
+              </button>
+            </td>
+
+            <td>
+              <button
+                className="btn btn-error"
+                onClick={() => handleApproveDeny("deny", course._id)}
+              >
+                Deny
+              </button>
+            </td>
+            </>
+              }
                 <Link to={`/dashboard/feedback/${course._id}`}>
                   <td>
                     <button className="btn btn-error">FeedBack</button>
