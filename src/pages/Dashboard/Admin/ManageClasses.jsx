@@ -12,6 +12,9 @@ const ManageClasses = () => {
     return res.data;
   });
 
+
+  // admin approve ,deny done
+
   const handleApproveDeny = (status, id) => {
 
 
