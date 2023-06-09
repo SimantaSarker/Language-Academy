@@ -9,7 +9,7 @@ const InstructorsRoutes = ({children}) => {
 
   const [isInstructors,isInstructorsLoading]=useInstructors();
   const location=useLocation();
-
+console.log(isInstructors)
 
 if(loading || isInstructorsLoading)
 {

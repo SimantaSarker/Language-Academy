@@ -18,7 +18,7 @@ const Navbar = () => {
     },
   });
 
-  console.log(isVerify);
+
 
   const handleLogOut = () => {
     LogOut()

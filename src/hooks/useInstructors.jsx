@@ -12,7 +12,7 @@ const useInstructors = () => {
     enabled:!! user?.email && !!localStorage.getItem("access-token"),
     queryFn:async ()=>{
       const response = await axiosSecure.get(`/users/instructors/${user?.email}`);
-      return response.data;
+      return response.data.instructors;
     
     }
     
