@@ -1,4 +1,5 @@
 import useApprove from "../../hooks/useApprove";
+import ClassCard from "./ClassCard";
 
 const Classes = () => {
 
@@ -7,8 +8,10 @@ console.log(isApprove)
 
 
   return (
-    <div>
-      <h1>Classes Page:{isApprove.length}</h1>
+    <div className="grid sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 mx-auto w-[100%]">
+    {
+      isApprove.map((card)=><ClassCard key={card._id} card={card}></ClassCard>)
+    }
     </div>
   );
 };

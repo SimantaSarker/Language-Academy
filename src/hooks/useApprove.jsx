@@ -12,7 +12,6 @@ const useApprove = () => {
     enabled: !!user?.email && !!localStorage.getItem("access-token"),
     queryFn: async () => {
       const response = await axiosSecure.get("/courses/approve");
-     console.log(response.data)
       return response.data;
     },
   });
