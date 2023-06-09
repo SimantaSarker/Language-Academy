@@ -13,7 +13,7 @@ const ManageClasses = () => {
   });
 
 
-  // admin approve ,deny done
+  // admin approve ,deny
 
   const handleApproveDeny = (status, id) => {
 

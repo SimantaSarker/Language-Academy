@@ -1,9 +1,24 @@
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../provider/AuthProvider";
 import { useContext } from "react";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
+import { useQuery } from "@tanstack/react-query";
 
 const Navbar = () => {
   const { LogOut, user } = useContext(AuthContext);
+
+  const [axiosSecure] = useAxiosSecure();
+
+  const { data: isVerify } = useQuery({
+    queryKey: ["isVerify", user?.email],
+    enabled: !!user?.email && !!localStorage.getItem("access-token"),
+    queryFn: async () => {
+      const response = await axiosSecure.get(`/users/verify/${user?.email}`);
+      return response.data.role;
+    },
+  });
+
+  console.log(isVerify);
 
   const handleLogOut = () => {
     LogOut()
@@ -46,9 +61,32 @@ const Navbar = () => {
             <li>
               <Link to="/classes">Classes</Link>
             </li>
-            <li>
-              <Link to="/dashboard">Dashboard</Link>
-            </li>
+            {isVerify === "admin" ? (
+              <li>
+                <Link to="/dashboard/manageUsers">Dashboard</Link>
+              </li>
+            ) : (
+              <li>
+                <Link to="/dashboard/selectedClasses">Dashboard</Link>
+              </li>
+            )}
+
+
+            {
+              isVerify==="instructors"?
+              (
+                <li>
+                  <Link to="/dashboard/myClasses">Dashboard</Link>
+                </li>
+              ) : (
+                <li>
+                  <Link to="/dashboard/selectedClasses">Dashboard</Link>
+                </li>
+              )
+            }
+
+
+
           </ul>
         </div>
         <div className=" flex items-center justify-center">
@@ -60,7 +98,7 @@ const Navbar = () => {
               />
             </div>
           </label>
-          <a className="btn btn-ghost normal-case text-2xl"> Universe</a>
+          <a className="btn btn-ghost normal-case text-2xl"> Learn Language</a>
         </div>
       </div>
       <div className="navbar-center hidden lg:flex">
@@ -74,9 +112,15 @@ const Navbar = () => {
           <li>
             <Link to="/classes">Classes</Link>
           </li>
-          <li>
-            <Link to="/dashboard">Dashboard</Link>
-          </li>
+          {isVerify === "admin" ? (
+              <li>
+                <Link to="/dashboard/manageUsers">Dashboard</Link>
+              </li>
+            ) : (
+              <li>
+                <Link to="/dashboard/selectedClasses">Dashboard</Link>
+              </li>
+            )}
         </ul>
       </div>
       {user ? (
