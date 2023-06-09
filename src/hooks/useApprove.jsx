@@ -1,17 +1,12 @@
-import { useContext } from "react";
-import { AuthContext } from "../provider/AuthProvider";
-import useAxiosSecure from "./useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
+import axios from "axios";
 
 const useApprove = () => {
-  const [axiosSecure] = useAxiosSecure();
-  const { user } = useContext(AuthContext);
 
   const { data: isApprove=[], isLoading: isApproveLoading } = useQuery({
     queryKey: ["isApprove"],
-    enabled: !!user?.email && !!localStorage.getItem("access-token"),
     queryFn: async () => {
-      const response = await axiosSecure.get("/courses/approve");
+      const response = await axios.get("http://localhost:5000/courses/approve");
       return response.data;
     },
   });
