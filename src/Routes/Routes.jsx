@@ -16,6 +16,7 @@ import ManageUsers from "../pages/Dashboard/Admin/ManageUsers";
 import AdminRoutes from "./AdminRoutes";
 import InstructorsRoutes from "./InstructorsRoutes";
 import FeedBack from "../pages/Dashboard/Admin/FeedBack";
+import MyEnrolled from "../pages/Dashboard/Students/MyEnrolled";
 
 
 
@@ -58,6 +59,10 @@ const router=createBrowserRouter([
     {
       path:"paymentHistory",
       element:<PaymentHistory></PaymentHistory>
+    },
+    {
+      path:"myEnrolled",
+      element:<MyEnrolled></MyEnrolled>
     },
     // Instructors Routes
     {

@@ -97,6 +97,14 @@ const Dashboard = () => {
                  Payment History
                 </Link>
               </li>
+              <li>
+                <Link to="/dashboard/myEnrolled">
+                  <FaUsers className="transition transform hover:-translate-y-1 motion-reduce:transition-none motion-reduce:hover:transform-none "></FaUsers>
+                 My Enrolled
+                </Link>
+              </li>
+
+              
             </>
           ) : (
             ""
