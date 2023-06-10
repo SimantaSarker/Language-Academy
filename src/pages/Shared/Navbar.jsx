@@ -1,32 +1,32 @@
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../provider/AuthProvider";
-import { useContext } from "react";
-import useAxiosSecure from "../../hooks/useAxiosSecure";
-import { useQuery } from "@tanstack/react-query";
+import { useContext,} from "react";
+import useVerify from "../../hooks/useVerify";
 
 const Navbar = () => {
-  const { LogOut, user } = useContext(AuthContext);
+  const { LogOut, user,} = useContext(AuthContext);
 
-  const [axiosSecure] = useAxiosSecure();
 
-  const { data: isVerify } = useQuery({
-    queryKey: ["isVerify", user?.email],
-    enabled: !!user?.email && !!localStorage.getItem("access-token"),
-    queryFn: async () => {
-      const response = await axiosSecure.get(`/users/verify/${user?.email}`);
-      return response.data.role;
-    },
-  });
+const [isVerify]=useVerify();
+  
+
+ 
+ 
 
 
 
   const handleLogOut = () => {
     LogOut()
-      .then(() => {})
+      .then(() => {
+      })
       .catch((error) => {
         console.log(error.message);
+
       });
   };
+ 
+
+
 
   return (
     <div className="navbar bg-slate-200 z-10 sticky top-0 rounded home">
@@ -66,31 +66,44 @@ const Navbar = () => {
                 <Link to="/dashboard/manageUsers">Dashboard</Link>
               </li>
             ) : (
+              ""
+            )}
+
+            {isVerify === "instructors" ? (
+              <li>
+                <Link to="/dashboard/myClasses">Dashboard</Link>
+              </li>
+            ) : (
+              ""
+            )}
+
+            {isVerify === "student"? (
               <li>
                 <Link to="/dashboard/selectedClasses">Dashboard</Link>
               </li>
+            ) : (
+              ""
             )}
 
-
-            {
-              isVerify==="instructors"?
-              (
-                <li>
-                  <Link to="/dashboard/myClasses">Dashboard</Link>
-                </li>
-              ) : (
-                <li>
-                  <Link to="/dashboard/selectedClasses">Dashboard</Link>
-                </li>
-              )
-            }
-
-
-
+            {/* {isVerify === "admin" ? (
+              <li>
+                <Link to="/dashboard/manageUsers">Dashboard</Link>
+              </li>
+            ) : isVerify === "instructors" ? (
+              <li>
+                <Link to="/dashboard/myClasses">Dashboard</Link>
+              </li>
+            ) : isVerify === "student" ? (
+              <li>
+                <Link to="/dashboard/selectedClasses">Dashboard</Link>
+              </li>
+            ) : (
+              ""
+            )} */}
           </ul>
         </div>
         <div className=" flex items-center justify-center">
-          <label tabIndex={0} className=" btn-circle avatar">
+          <label tabIndex={0} className="btn-circle avatar">
             <div className="w-24 rounded">
               <img
                 src="https://images.unsplash.com/photo-1661956600684-97d3a4320e45?ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
@@ -113,14 +126,43 @@ const Navbar = () => {
             <Link to="/classes">Classes</Link>
           </li>
           {isVerify === "admin" ? (
-              <li>
-                <Link to="/dashboard/manageUsers">Dashboard</Link>
-              </li>
-            ) : (
-              <li>
-                <Link to="/dashboard/selectedClasses">Dashboard</Link>
-              </li>
-            )}
+            <li>
+              <Link to="/dashboard/manageUsers">Dashboard</Link>
+            </li>
+          ) : (
+            ""
+          )}
+
+          {isVerify === "instructors" ? (
+            <li>
+              <Link to="/dashboard/myClasses">Dashboard</Link>
+            </li>
+          ) : (
+            ""
+          )}
+
+          {isVerify === "student"? (
+            <li>
+              <Link to="/dashboard/selectedClasses">Dashboard</Link>
+            </li>
+          ) : (
+            ""
+          )}
+          {/* {isVerify === "admin" ? (
+            <li>
+              <Link to="/dashboard/manageUsers">Dashboard</Link>
+            </li>
+          ) : isVerify === "instructors" ? (
+            <li>
+              <Link to="/dashboard/myClasses">Dashboard</Link>
+            </li>
+          ) : isVerify === "student" ? (
+            <li>
+              <Link to="/dashboard/selectedClasses">Dashboard</Link>
+            </li>
+          ) : (
+            ""
+          )} */}
         </ul>
       </div>
       {user ? (

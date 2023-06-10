@@ -50,7 +50,7 @@ const router=createBrowserRouter([
   path:"/dashboard",
   element:<PrivateRoutes><Dashboard></Dashboard></PrivateRoutes>,
   children:[
-    //student Routes
+    // student Routes
     {
       path:"selectedClasses",
       element:<SelectedClasses></SelectedClasses>

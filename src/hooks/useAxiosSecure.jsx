@@ -34,8 +34,11 @@ const useAxiosSecure = () => {
         if (error.response.status=== 401 || error.response.status === 403) {
           // Call logout asynchronously and redirect to login page
             await LogOut();
+
             navigate('/login');
+            
         }
+      
         return Promise.reject(error);
       }
     );

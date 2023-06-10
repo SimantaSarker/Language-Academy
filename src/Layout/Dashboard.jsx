@@ -7,17 +7,15 @@ import {
   FaUsers,
   // FaBook,
 } from "react-icons/fa";
-import { BsWalletFill } from "react-icons/bs";
 import { AiFillHome, AiOutlineMenu, AiTwotoneShopping } from "react-icons/ai";
-
-import { useQuery } from "@tanstack/react-query";
-import { useContext } from "react";
-import { AuthContext } from "../provider/AuthProvider";
 import useAxiosSecure from "../hooks/useAxiosSecure";
+import { useQuery } from "@tanstack/react-query";
+import { AuthContext } from "../provider/AuthProvider";
+import { useContext } from "react";
 
 const Dashboard = () => {
-  const { user } = useContext(AuthContext);
   const [axiosSecure] = useAxiosSecure();
+  const { user } = useContext(AuthContext);
 
   const { data: isVerify } = useQuery({
     queryKey: ["isVerify", user?.email],
@@ -27,6 +25,8 @@ const Dashboard = () => {
       return response.data.role;
     },
   });
+
+
 
   return (
     <div className="drawer lg:drawer-open">
@@ -44,7 +44,7 @@ const Dashboard = () => {
       <div className="drawer-side">
         <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
         <ul className="menu p-4 w-70 h-full  drop-shadow-7xl text-xl flex justify-center bg-gradient-to-r from-cyan-200 to-blue-100">
-          {/* Sidebar content here */}
+          {/*-----Sidebar content here----*/}
 
           {isVerify == "admin" ? (
             <>
@@ -68,12 +68,14 @@ const Dashboard = () => {
             <>
               <li>
                 <Link to="/dashboard/addClasses">
-                  <AiFillHome className="transition transform hover:-translate-y-1 motion-reduce:transition-none motion-reduce:hover:transform-none "></AiFillHome>Add Classes
+                  <AiFillHome className="transition transform hover:-translate-y-1 motion-reduce:transition-none motion-reduce:hover:transform-none "></AiFillHome>
+                  Add Classes
                 </Link>
               </li>
               <li>
                 <Link to="/dashboard/myClasses">
-                  <FaUsers className="transition transform hover:-translate-y-1 motion-reduce:transition-none motion-reduce:hover:transform-none "></FaUsers> My Classes
+                  <FaUsers className="transition transform hover:-translate-y-1 motion-reduce:transition-none motion-reduce:hover:transform-none "></FaUsers>
+                  My Classes
                 </Link>
               </li>
             </>
@@ -85,13 +87,14 @@ const Dashboard = () => {
             <>
               <li>
                 <Link to="/dashboard/selectedClasses">
-                  <AiFillHome className="transition transform hover:-translate-y-1 motion-reduce:transition-none motion-reduce:hover:transform-none "></AiFillHome>Selected Classes
+                  <AiFillHome className="transition transform hover:-translate-y-1 motion-reduce:transition-none motion-reduce:hover:transform-none "></AiFillHome>
+                  Selected Class
                 </Link>
               </li>
-
               <li>
                 <Link to="/dashboard/paymentHistory">
-                  <BsWalletFill className="transition transform hover:-translate-y-1 motion-reduce:transition-none motion-reduce:hover:transform-none "></BsWalletFill> Payment History
+                  <FaUsers className="transition transform hover:-translate-y-1 motion-reduce:transition-none motion-reduce:hover:transform-none "></FaUsers>
+                 Payment History
                 </Link>
               </li>
             </>
@@ -99,16 +102,66 @@ const Dashboard = () => {
             ""
           )}
 
+
+          {/* {isVerify === "admin" ? (
+             <>
+             <li>
+               <Link to="/dashboard/manageClasses">
+                 <AiFillHome></AiFillHome>Mange Classes
+               </Link>
+             </li>
+
+             <li>
+               <Link to="/dashboard/manageUsers">
+                 <FaUsers></FaUsers> Manage Users
+               </Link>
+             </li>
+           </>
+          ) : isVerify === "instructors" ? (
+            <>
+            <li>
+              <Link to="/dashboard/addClasses">
+                <AiFillHome className="transition transform hover:-translate-y-1 motion-reduce:transition-none motion-reduce:hover:transform-none "></AiFillHome>
+                Add Classes
+              </Link>
+            </li>
+            <li>
+              <Link to="/dashboard/myClasses">
+                <FaUsers className="transition transform hover:-translate-y-1 motion-reduce:transition-none motion-reduce:hover:transform-none "></FaUsers>{" "}
+                My Classes
+              </Link>
+            </li>
+          </>
+          ) : isVerify === "student" ? (
+            <>
+            <li>
+              <Link to="/dashboard/selectedClasses">
+                <AiFillHome className="transition transform hover:-translate-y-1 motion-reduce:transition-none motion-reduce:hover:transform-none "></AiFillHome>
+                Selected Classes
+              </Link>
+            </li>
+            <li>
+              <Link to="/dashboard/paymentHistory">
+                <FaUsers className="transition transform hover:-translate-y-1 motion-reduce:transition-none motion-reduce:hover:transform-none "></FaUsers>
+                Payment History
+              </Link>
+            </li>
+          </>
+          ) : (
+            ""
+          )} */}
+
           <div className="divider"></div>
 
           <li>
             <Link to="/">
-              <FaHome className="transition transform hover:-translate-y-1 motion-reduce:transition-none motion-reduce:hover:transform-none "></FaHome>Home
+              <FaHome className="transition transform hover:-translate-y-1 motion-reduce:transition-none motion-reduce:hover:transform-none "></FaHome>
+              Home
             </Link>
           </li>
           <li>
             <Link to="/instructors">
-              <AiOutlineMenu ></AiOutlineMenu> Instructors
+              <AiOutlineMenu></AiOutlineMenu> Instructors
             </Link>
           </li>
           <li>

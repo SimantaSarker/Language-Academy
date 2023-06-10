@@ -19,6 +19,7 @@ export const AuthContext = createContext(null);
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [token,setToken]=useState(false);
 
   const createUser = (email, password) => {
     setLoading(true);
@@ -43,11 +44,13 @@ const AuthProvider = ({ children }) => {
 
   const LogOut = () => {
     setLoading(true);
+    setToken(false)
     return signOut(auth);
   };
 
   useEffect(() => {
     const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
+      console.log(currentUser)
       setUser(currentUser);
       if (currentUser) {
         axios
@@ -55,11 +58,13 @@ const AuthProvider = ({ children }) => {
           .then((data) => {
             localStorage.setItem("access-token", data.data.token);
             setLoading(false);
+            setToken(true);
+            // window.location.reload();
           });
       } else {
         localStorage.removeItem("access-token");
       }
-      setLoading(false);
+      // setLoading(false);
      
     });
     return () => {
@@ -75,6 +80,8 @@ const AuthProvider = ({ children }) => {
     googleSignIn,
     updateUserProfile,
     LogOut,
+    token,
+  
   };
 
   return (
