@@ -13,7 +13,7 @@ const [axiosSecure]=useAxiosSecure();
 
 
 
-const {refetch,data:cart=[] } = useQuery({
+const {data:cart=[],refetch } = useQuery({
   queryKey: ['carts',user?.email],
   enabled:!! user?.email && !!localStorage.getItem("access-token"),
   queryFn: async () => {
