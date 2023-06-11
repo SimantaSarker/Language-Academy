@@ -17,7 +17,8 @@ import AdminRoutes from "./AdminRoutes";
 import InstructorsRoutes from "./InstructorsRoutes";
 import FeedBack from "../pages/Dashboard/Admin/FeedBack";
 import MyEnrolled from "../pages/Dashboard/Students/MyEnrolled";
-import Payment from "../pages/Payment.jsx/Payment";
+import Payment from "../pages/Payment/Payment";
+
 
 
 

@@ -38,7 +38,6 @@ const ClassCard = ({ card }) => {
         .then((data) => {
           if (data.insertedId) {
             Swal.fire("Good job!", "Cart added in Your Selected Classes!", "success");
-            console.log(data)
             setDisabled(true)
           }
         });

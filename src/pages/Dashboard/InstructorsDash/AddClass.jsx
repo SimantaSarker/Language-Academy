@@ -19,7 +19,7 @@ const AddClass = () => {
     const instructorEmail=user?.email;
     const status="pending";
     const addedClasses={
-      courseName,instructorName,instructorEmail,image,seats,price,status
+      courseName,instructorName,instructorEmail,image,seats:parseInt(seats),price:parseFloat(price),status
     }
 
     axiosSecure.post("/courses",addedClasses)
@@ -103,7 +103,7 @@ const AddClass = () => {
                 <span className="label-text text-xl">Available Seats</span>
               </label>
               <input
-                type="text"
+                type="number"
                 name="availableSeats"
                 required
                 placeholder="Enter Available Seats"
@@ -115,7 +115,7 @@ const AddClass = () => {
                 <span className="label-text text-xl">Price</span>
               </label>
               <input
-                type="text"
+                type="number"
                 name="price"
                 required
                 placeholder="Enter Price"

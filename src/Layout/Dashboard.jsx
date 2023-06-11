@@ -30,8 +30,8 @@ const Dashboard = () => {
 
   return (
     <div className="drawer lg:drawer-open">
-      <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
-      <div className="drawer-content flex flex-col items-center justify-center  ">
+      <input id="my-drawer-2" type="checkbox" className="drawer-toggle " />
+      <div className="drawer-content   bg-gradient-to-r from-cyan-100 to-blue-10 my-auto h-full">
         {/* Page content here */}
         <label
           htmlFor="my-drawer-2"
@@ -43,7 +43,7 @@ const Dashboard = () => {
       </div>
       <div className="drawer-side">
         <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
-        <ul className="menu p-4 w-70 h-full  drop-shadow-7xl text-xl flex justify-center bg-gradient-to-r from-cyan-200 to-blue-100">
+        <ul className="menu p-4 w-80 h-full   text-xl flex justify-center ">
           {/*-----Sidebar content here----*/}
 
           {isVerify == "admin" ? (
@@ -111,53 +111,6 @@ const Dashboard = () => {
           )}
 
 
-          {/* {isVerify === "admin" ? (
-             <>
-             <li>
-               <Link to="/dashboard/manageClasses">
-                 <AiFillHome></AiFillHome>Mange Classes
-               </Link>
-             </li>
-
-             <li>
-               <Link to="/dashboard/manageUsers">
-                 <FaUsers></FaUsers> Manage Users
-               </Link>
-             </li>
-           </>
-          ) : isVerify === "instructors" ? (
-            <>
-            <li>
-              <Link to="/dashboard/addClasses">
-                <AiFillHome className="transition transform hover:-translate-y-1 motion-reduce:transition-none motion-reduce:hover:transform-none "></AiFillHome>
-                Add Classes
-              </Link>
-            </li>
-            <li>
-              <Link to="/dashboard/myClasses">
-                <FaUsers className="transition transform hover:-translate-y-1 motion-reduce:transition-none motion-reduce:hover:transform-none "></FaUsers>{" "}
-                My Classes
-              </Link>
-            </li>
-          </>
-          ) : isVerify === "student" ? (
-            <>
-            <li>
-              <Link to="/dashboard/selectedClasses">
-                <AiFillHome className="transition transform hover:-translate-y-1 motion-reduce:transition-none motion-reduce:hover:transform-none "></AiFillHome>
-                Selected Classes
-              </Link>
-            </li>
-            <li>
-              <Link to="/dashboard/paymentHistory">
-                <FaUsers className="transition transform hover:-translate-y-1 motion-reduce:transition-none motion-reduce:hover:transform-none "></FaUsers>
-                Payment History
-              </Link>
-            </li>
-          </>
-          ) : (
-            ""
-          )} */}
 
           <div className="divider"></div>
 
