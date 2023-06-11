@@ -6,9 +6,8 @@ import Swal from "sweetalert2";
 const SelectedClasses = () => {
   const [cart,refetch] = useCart();
 
-
+console.log(cart)
   const handleDelete=item=>{
-    console.log(item._id)
 
     Swal.fire({
       title: 'Are you sure want to delete?',

@@ -19,7 +19,7 @@ const FeedBack = () => {
         console.log(res)
         if (res.data.modifiedCount>0) {
           Swal.fire({
-            position: 'top-end',
+            position: 'center',
             icon: 'success',
             title: "Successfully feedback added",
             showConfirmButton: false,

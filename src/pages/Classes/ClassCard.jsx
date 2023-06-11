@@ -12,7 +12,7 @@ const ClassCard = ({ card }) => {
   const { user } = useContext(AuthContext);
   const navigate = useNavigate();
   const [isVerify] = useVerify();
-  const[disable,setDisabled]=useState(false)
+  const[disable,setDisabled]=useState(false);
 
 
   const handleAddCart = (card) => {
