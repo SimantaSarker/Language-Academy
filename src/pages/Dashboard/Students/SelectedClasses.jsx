@@ -8,6 +8,7 @@ const SelectedClasses = () => {
 
 
   const handleDelete=item=>{
+    console.log(item._id)
 
     Swal.fire({
       title: 'Are you sure want to delete?',

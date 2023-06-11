@@ -17,7 +17,7 @@ const {data:cart=[],refetch } = useQuery({
   queryKey: ['carts',user?.email],
   enabled:!! user?.email && !!localStorage.getItem("access-token"),
   queryFn: async () => {
-    const response = await axiosSecure.get("/carts");
+    const response = await axiosSecure.get(`/carts?email=${user?.email}`);
     return response.data;
   },
 
