@@ -12,6 +12,8 @@ import useAxiosSecure from "../hooks/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
 import { AuthContext } from "../provider/AuthProvider";
 import { useContext } from "react";
+import Navbar from "../pages/Shared/Navbar";
+import Footer from "../pages/Shared/Footer";
 
 const Dashboard = () => {
   const [axiosSecure] = useAxiosSecure();
@@ -29,9 +31,13 @@ const Dashboard = () => {
 
 
   return (
-    <div className="drawer lg:drawer-open">
-      <input id="my-drawer-2" type="checkbox" className="drawer-toggle " />
-      <div className="drawer-content   bg-gradient-to-r from-cyan-100 to-blue-10 my-auto h-full">
+    <>
+  
+    
+    <Navbar></Navbar>
+    <div className="drawer lg:drawer-open   bg-gradient-to-r from-indigo-200 via-purple-200 to-pink-200">
+      <input id="my-drawer-2" type="checkbox" className="drawer-toggle"/>
+      <div className="drawer-content flex flex-col items-center justify-center  ">
         {/* Page content here */}
         <label
           htmlFor="my-drawer-2"
@@ -39,11 +45,23 @@ const Dashboard = () => {
         >
           Open drawer
         </label>
-        <Outlet></Outlet>
+       
+       
+      
+   
+    
+     <div className="w-full">
+     <Outlet></Outlet>
+     </div>
+  
+ 
+       
+    
+      
       </div>
       <div className="drawer-side">
         <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
-        <ul className="menu p-4 w-80 h-full   text-xl flex justify-center ">
+        <ul className="menu  w-70 h-full bg-base-200 text-base-content  text-xl flex justify-center bg-gradient-to-r from-indigo-200 via-purple-200 to-pink-200 ">
           {/*-----Sidebar content here----*/}
 
           {isVerify == "admin" ? (
@@ -133,6 +151,8 @@ const Dashboard = () => {
         </ul>
       </div>
     </div>
+    <Footer></Footer>
+    </>
   );
 };
 

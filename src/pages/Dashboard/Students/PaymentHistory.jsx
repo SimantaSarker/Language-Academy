@@ -21,7 +21,7 @@ const PaymentHistory = () => {
 
 
   return (
-    <div className="grid md:grid-cols-3 lg:grid-cols-3 gap-4 ">
+    <div className="grid md:grid-cols-3 lg:grid-cols-3 gap-4  ">
      {
       paymentHistory.map((item)=><PaymentHistoryCard key={item._id} item={item}></PaymentHistoryCard>)
      }

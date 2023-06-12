@@ -3,7 +3,7 @@ const PaymentHistoryCard = ({ item }) => {
   console.log(item);
   const { courseName, date, image, price ,instructorName} = item;
   return (
-    <div className="card  bg-base-100  h-[70%] w-[20vw] shadow-xl mt-auto mx-auto">
+    <div className="card  bg-base-100  h-[70%] w-[20vw] shadow-xl  mx-auto my-auto">
       <figure className="">
         <img src={image} alt="Shoes" className="w-full object-cover" />
       </figure>

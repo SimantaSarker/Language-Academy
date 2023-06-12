@@ -54,8 +54,8 @@ const ClassCard = ({ card }) => {
 
   return (
     <>
-      {seats == 0 ? (
-        <div className="mt-12 mx-auto ">
+      {seats === 0 ? (
+        <div className="mt-12 mx-auto mb-9 ">
           <div className="card w-96  h-[70vh] shadow-xl bg-red-400">
             <figure className="w-full h-full">
               <img src={image} alt="Image" className="w-full" />
@@ -71,9 +71,9 @@ const ClassCard = ({ card }) => {
                 <div className="badge  text-xl">Available Seats:{seats}</div>
               </div>
 
-              {isVerify == "admin" ||
-              isVerify == "instructors" ||
-              seats == 0 ? (
+              {isVerify === "admin" ||
+              isVerify === "instructors" ||
+              seats === 0 ? (
                 <button
                   className="btn btn-success  text-xl mt-1 mb-1"
                   disabled
@@ -94,7 +94,7 @@ const ClassCard = ({ card }) => {
           </div>
         </div>
       ) : (
-        <div className="mt-12 mx-auto">
+        <div className="mt-12 mx-auto mb-9">
           <div className="card w-96  h-[70vh] bg-base-100 shadow-xl">
             <figure className="w-full h-full">
               <img src={image} alt="Image" className="w-full" />
@@ -110,9 +110,9 @@ const ClassCard = ({ card }) => {
                 <div className="badge  text-xl">Available Seats:{seats}</div>
               </div>
 
-              {isVerify == "admin" ||
-              isVerify == "instructors" ||
-              seats == 0 ? (
+              {isVerify === "admin" ||
+              isVerify === "instructors" ||
+              seats === 0 ? (
                 <button
                   className="btn btn-success  text-xl mt-1 mb-1"
                   disabled

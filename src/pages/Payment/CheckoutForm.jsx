@@ -101,7 +101,7 @@ const CheckoutForm = ({ price, cart }) => {
 
   return (
     <>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className="ml-28">
         <CardElement
           options={{
             style: {

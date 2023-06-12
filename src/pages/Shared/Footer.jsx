@@ -1,11 +1,9 @@
-
-import { FaInstagram,FaMobileAlt} from "react-icons/fa";
+import { FaInstagram, FaMobileAlt } from "react-icons/fa";
 
 const Footer = () => {
   return (
-    <div  data-aos="fade-up"
-     data-aos-duration="3000 ">
-      <footer className="footer p-10 bg-base-200 text-base-content text-xl">
+    <div data-aos="fade-up" data-aos-duration="3000 ">
+      <footer className="footer p-10 bg-base-200 text-base-content text-xl  bg-gradient-to-r from-indigo-200 via-purple-200 to-pink-200">
         <div>
           <span className="footer-title">Services</span>
           <a className="link link-hover">Branding</a>
@@ -25,10 +23,13 @@ const Footer = () => {
           <a className="link link-hover">Cookie policy</a>
         </div>
       </footer>
-      <footer className="footer px-10 py-4 border-t bg-base-200 text-base-content border-base-300">
+      <footer className="footer px-10 py-4 border-t bg-base-200 text-base-content border-base-300 bg-gradient-to-r from-indigo-200 via-purple-200 to-pink-200">
         <div className="items-center md:flex flex-row">
           <div className="w-24 rounded">
-            <img src="https://images.unsplash.com/photo-1575936123452-b67c3203c357?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8aW1hZ2V8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60" className="object-cover" />
+            <img
+              src="https://images.unsplash.com/photo-1575936123452-b67c3203c357?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8aW1hZ2V8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60"
+              className="object-cover"
+            />
           </div>
           <div className="text-xl flex flex-col">
             <p className="ms-1"> Action Universe </p>
@@ -73,14 +74,13 @@ const Footer = () => {
               <p className="ms-1">simantasarker0000@gmail.com</p>
             </div>
             <div className="md:flex ">
-            <FaMobileAlt style={{fontSize:"20px"}}></FaMobileAlt>
-            <p>+880-17******** (Available from 10am to 4px)</p>
+              <FaMobileAlt style={{ fontSize: "20px" }}></FaMobileAlt>
+              <p>+880-17******** (Available from 10am to 4px)</p>
             </div>
-          
           </div>
         </div>
         <div className="footer px-10 py-4 border-t bg-base-200 text-base-content border-base-300">
-          <p className="text-xl">Copyright @ 2023  by Action Universe</p>
+          <p className="text-xl">Copyright @ 2023 by Action Universe</p>
         </div>
         <div className="md:place-self-center md:justify-self-end ">
           <div className="grid grid-flow-col gap-4 ">
@@ -97,7 +97,6 @@ const Footer = () => {
             </a>
             <a href="https://www.instagram.com/s.simanta_sarkar0000/">
               <FaInstagram style={{ fontSize: "30px" }}></FaInstagram>
-
             </a>
 
             <a href="https://www.facebook.com/profile.php?id=100008064886779">
@@ -111,7 +110,6 @@ const Footer = () => {
                 <path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"></path>
               </svg>
             </a>
-           
           </div>
         </div>
       </footer>

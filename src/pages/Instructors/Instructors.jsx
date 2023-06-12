@@ -13,7 +13,7 @@ const Instructors = () => {
   });
 
   return (
-    <div className="w-full max-w-7xl mx-auto">
+    <div className="w-full mx-auto bg-gradient-to-r from-indigo-200 via-purple-200 to-pink-200">
       <div className="overflow-x-auto text-center " style={{fontFamily:"sans-serif"}}>
         <table className="table mx-auto">
           <thead>

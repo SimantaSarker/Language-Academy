@@ -4,60 +4,53 @@ import { AiFillDelete } from "react-icons/ai";
 import Swal from "sweetalert2";
 
 const SelectedClasses = () => {
-  const [cart,refetch] = useCart();
+  const [cart, refetch] = useCart();
 
-console.log(cart)
-  const handleDelete=item=>{
-
+  console.log(cart);
+  const handleDelete = (item) => {
     Swal.fire({
-      title: 'Are you sure want to delete?',
+      title: "Are you sure want to delete?",
       text: "You won't be able to revert this!",
-      icon: 'warning',
+      icon: "warning",
       showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Yes, delete it!'
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
     }).then((result) => {
-      if (result.isConfirmed) 
-      fetch(`http://localhost:5000/carts/${item?._id}`,{
-        method:"DELETE",
-        headers:{
-          "content-type":"application/json"
-        },
-  
-      })
-      .then((res)=>res.json()).then((data)=>{
-        if(data.deletedCount>0)
-        {
-          refetch();
-          Swal.fire(
-            'Deleted!',
-            'Your item has been deleted properly.',
-            'success'
-          )
-        }
-      })
-
-    })
- 
-  }
-
-
-
+      if (result.isConfirmed)
+        fetch(`http://localhost:5000/carts/${item?._id}`, {
+          method: "DELETE",
+          headers: {
+            "content-type": "application/json",
+          },
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.deletedCount > 0) {
+              refetch();
+              Swal.fire(
+                "Deleted!",
+                "Your item has been deleted properly.",
+                "success"
+              );
+            }
+          });
+    });
+  };
 
   return (
-    <div className="w-full">
-      <div className="overflow-x-auto">
+    <div className="absolute top-0  w-[83%] mx-auto">
+      <div className="overflow-x-auto w-[70%] mx-auto mt-10 ">
         <table className="table">
           <thead>
-            <tr>
+            <tr className="bg-slate-400">
               <th></th>
-              <th className="text-2xl">Course Name</th>
-              <th className="text-2xl">Image</th>
-              <th className="text-2xl">Price</th>
-              <th className="text-2xl">Seats</th>
-              <th className="text-2xl">Delete</th>
-              <th className="text-2xl">Update</th>
+              <th className="text-xl text-white">Course Name</th>
+              <th className="text-xl text-white">Image</th>
+              <th className="text-xl text-white">Price</th>
+              <th className="text-xl text-white">Seats</th>
+              <th className="text-xl text-white">Delete</th>
+              <th className="text-xl text-white">Pay</th>
             </tr>
           </thead>
           <tbody>
@@ -79,7 +72,10 @@ console.log(cart)
                 <td className="text-xl">{item?.seats}</td>
 
                 <td>
-                  <button className="btn btn-ghost btn-xs h-14" onClick={()=>handleDelete(item)}>
+                  <button
+                    className="btn btn-ghost btn-xs h-14"
+                    onClick={() => handleDelete(item)}
+                  >
                     <AiFillDelete size={30}></AiFillDelete>
                   </button>
                 </td>

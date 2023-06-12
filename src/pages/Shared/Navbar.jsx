@@ -29,7 +29,7 @@ const [isVerify]=useVerify();
 
 
   return (
-    <div className="navbar bg-slate-200 z-10 sticky top-0 rounded home">
+    <div className="navbar bg-gradient-to-r from-indigo-200 via-purple-200 to-pink-200 z-10 sticky top-0 rounded home">
       <div className="navbar-start">
         <div className="dropdown">
           <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -50,7 +50,7 @@ const [isVerify]=useVerify();
           </label>
           <ul
             tabIndex={0}
-            className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
+            className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52 text-xl"
           >
             <li>
               <Link to="/">Home</Link>
@@ -85,21 +85,6 @@ const [isVerify]=useVerify();
               ""
             )}
 
-            {/* {isVerify === "admin" ? (
-              <li>
-                <Link to="/dashboard/manageUsers">Dashboard</Link>
-              </li>
-            ) : isVerify === "instructors" ? (
-              <li>
-                <Link to="/dashboard/myClasses">Dashboard</Link>
-              </li>
-            ) : isVerify === "student" ? (
-              <li>
-                <Link to="/dashboard/selectedClasses">Dashboard</Link>
-              </li>
-            ) : (
-              ""
-            )} */}
           </ul>
         </div>
         <div className=" flex items-center justify-center">
@@ -115,7 +100,7 @@ const [isVerify]=useVerify();
         </div>
       </div>
       <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal px-1">
+        <ul className="menu menu-horizontal px-1 text-2xl">
           <li>
             <Link to="/">Home</Link>
           </li>

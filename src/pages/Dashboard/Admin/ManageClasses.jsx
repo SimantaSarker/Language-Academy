@@ -5,7 +5,6 @@ import Swal from "sweetalert2";
 
 const ManageClasses = () => {
   const [axiosSecure] = useAxiosSecure();
-  // const [disable, setDisabled] = useState(false);
 
   const { data: courses = [],refetch } = useQuery(["courses"], async () => {
     const res = await axiosSecure("/courses");
@@ -47,14 +46,13 @@ const ManageClasses = () => {
   };
 
   return (
-    <div className="w-full">
    
-      <div className="overflow-x-auto">
+      <div className="overflow-x-auto w-full mx-auto">
         <table className="table">
           <thead>
             <tr>
-              <th>Class Name</th>
-              <th> Class Image</th>
+              <th>Image</th>
+              <th>Name</th>
               <th>Instructor Name</th>
               <th>Instructor Email</th>
               <th>Available Seats</th>
@@ -62,7 +60,7 @@ const ManageClasses = () => {
               <th>Status</th>
               <th>Approve</th>
               <th>Deny</th>
-              <th>Admin Feedback</th>
+              <th>Feedback</th>
             </tr>
           </thead>
           <tbody>
@@ -86,8 +84,8 @@ const ManageClasses = () => {
                 
             {
               course.status=="approve" || course.status=="deny"? <td>
-              <button className="btn btn-info">{course.status}</button>
-            </td>:<td><button className="btn btn-info">{course.status}</button></td>
+              <button className="btn btn-sm btn-info">{course.status}</button>
+            </td>:<td><button className="btn btn-sm btn-info">{course.status}</button></td>
             }
 
               {
@@ -95,7 +93,7 @@ const ManageClasses = () => {
                 <>
                 <td>
                 <button
-                  className="btn btn-success" disabled
+                  className="btn btn-sm btn-success" disabled
                   onClick={() => handleApproveDeny("approve", course._id)}
                 >
                   Approve
@@ -104,7 +102,7 @@ const ManageClasses = () => {
 
               <td>
                 <button
-                  className="btn btn-error" disabled
+                  className="btn btn-sm btn-error" disabled
                   onClick={() => handleApproveDeny("deny", course._id)}
                 >
                   Deny
@@ -114,16 +112,16 @@ const ManageClasses = () => {
               :      <>
               <td>
               <button
-                className="btn btn-success"
+                className="btn btn-sm btn-success"
                 onClick={() => handleApproveDeny("approve", course._id)}
               >
                 Approve
               </button>
             </td>
 
-            <td>
+            <td className="">
               <button
-                className="btn btn-error"
+                className="btn btn-sm btn-error"
                 onClick={() => handleApproveDeny("deny", course._id)}
               >
                 Deny
@@ -133,7 +131,7 @@ const ManageClasses = () => {
               }
                 <Link to={`/dashboard/feedback/${course._id}`}>
                   <td>
-                    <button className="btn btn-error">FeedBack</button>
+                    <button className="btn btn-sm btn-error lowercase">FeedBack</button>
                   </td>
                 </Link>
               </tr>
@@ -141,7 +139,7 @@ const ManageClasses = () => {
           </tbody>
         </table>
       </div>
-    </div>
+
   );
 };
 

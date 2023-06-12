@@ -69,10 +69,10 @@ const ManageUsers = () => {
   };
 
   return (
-    <div className="w-full max-w-7xl border-8">
+
    
 
-      <div className="overflow-x-auto font-semibold">
+      <div className="overflow-x-auto ">
         <table className="table">
           <thead>
             <tr>
@@ -87,7 +87,7 @@ const ManageUsers = () => {
               <tr key={user._id}>
                 <td>{user.name}</td>
                 <td>{user.email}</td>
-                <th className="flex items-center justify-between">
+                <th className="">
                   {user.role === "admin" ? (
              
                     <button className="btn btn-success" disabled>Admin</button>
@@ -122,7 +122,7 @@ const ManageUsers = () => {
           </tbody>
         </table>
       </div>
-    </div>
+   
   );
 };
 
