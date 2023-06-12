@@ -22,6 +22,7 @@ const AddClass = () => {
     const addedClasses={
       courseName,instructorName,instructorEmail,image,seats:parseInt(seats),price:parseFloat(price),status,enrolled:enrolledValue
     }
+    console.log(addedClasses)
 
     axiosSecure.post("/courses",addedClasses)
     .then((data)=>{
