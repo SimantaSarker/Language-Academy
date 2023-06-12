@@ -6,7 +6,8 @@ import Swal from "sweetalert2";
 
 const AddClass = () => {
   const { user } = useContext(AuthContext);
-  const [axiosSecure]=useAxiosSecure()
+  const [axiosSecure]=useAxiosSecure();
+  const enrolledValue=0;
 
   const handleAddClass=(event)=>{
     event.preventDefault();
@@ -19,7 +20,7 @@ const AddClass = () => {
     const instructorEmail=user?.email;
     const status="pending";
     const addedClasses={
-      courseName,instructorName,instructorEmail,image,seats:parseInt(seats),price:parseFloat(price),status
+      courseName,instructorName,instructorEmail,image,seats:parseInt(seats),price:parseFloat(price),status,enrolled:enrolledValue
     }
 
     axiosSecure.post("/courses",addedClasses)

@@ -8,16 +8,12 @@ import useVerify from "../../hooks/useVerify";
 const ClassCard = ({ card }) => {
   const { courseName, image, instructorName, price, seats, status } = card;
 
-
   const { user } = useContext(AuthContext);
   const navigate = useNavigate();
   const [isVerify] = useVerify();
-  const[disable,setDisabled]=useState(false);
-
+  const [disable, setDisabled] = useState(false);
 
   const handleAddCart = (card) => {
- 
-
     if (user && user.email) {
       const cartItem = {
         courseId: card._id,
@@ -25,6 +21,7 @@ const ClassCard = ({ card }) => {
         image,
         seats,
         price,
+        instructorName,
         email: user?.email,
       };
       fetch("http://localhost:5000/carts", {
@@ -37,8 +34,12 @@ const ClassCard = ({ card }) => {
         .then((res) => res.json())
         .then((data) => {
           if (data.insertedId) {
-            Swal.fire("Good job!", "Cart added in Your Selected Classes!", "success");
-            setDisabled(true)
+            Swal.fire(
+              "Good job!",
+              "Cart added in Your Selected Classes!",
+              "success"
+            );
+            setDisabled(true);
           }
         });
     } else {

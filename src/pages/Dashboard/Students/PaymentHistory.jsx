@@ -9,7 +9,7 @@ const PaymentHistory = () => {
   const {user}=useContext(AuthContext);
   const [axiosSecure]=useAxiosSecure()
   const { data: paymentHistory = [] } = useQuery({
-    queryKey: ["carts", user?.email],
+    queryKey: ["payment", user?.email],
     enabled: !!user?.email && !!localStorage.getItem("access-token"),
     queryFn: async () => {
       const response = await axiosSecure.get(`/payments/${user?.email}`);

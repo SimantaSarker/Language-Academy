@@ -24,7 +24,6 @@ const CheckoutForm = ({ price, cart }) => {
     }
   }, [price, axiosSecure]);
 
- 
 
   const handleSubmit = async (event) => {
     // Block native form submission.
@@ -83,6 +82,7 @@ const CheckoutForm = ({ price, cart }) => {
         courseId:cart[0]?.courseId,
         image:cart[0]?.image,
         seats:cart[0]?.seats,
+        instructorName:cart[0]?.instructorName,
 
       };
       axiosSecure.post("/payments", payment).then((res) => {

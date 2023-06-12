@@ -19,7 +19,7 @@ console.log(cart)
       confirmButtonText: 'Yes, delete it!'
     }).then((result) => {
       if (result.isConfirmed) 
-      fetch(`http://localhost:5000/carts/${item._id}`,{
+      fetch(`http://localhost:5000/carts/${item?._id}`,{
         method:"DELETE",
         headers:{
           "content-type":"application/json"
@@ -75,15 +75,15 @@ console.log(cart)
                     </div>
                   </div>
                 </td>
-                <td className="text-xl">{item.price}</td>
-                <td className="text-xl">{item.seats}</td>
+                <td className="text-xl">{item?.price}</td>
+                <td className="text-xl">{item?.seats}</td>
 
                 <td>
                   <button className="btn btn-ghost btn-xs h-14" onClick={()=>handleDelete(item)}>
                     <AiFillDelete size={30}></AiFillDelete>
                   </button>
                 </td>
-                <Link to={`/dashboard/payment/${item._id}`}>
+                <Link to={`/dashboard/payment/${item?._id}`}>
                   <td>
                     <button className="btn btn-active btn-primary h-12">
                       Payment

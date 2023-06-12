@@ -1,7 +1,7 @@
 import moment from "moment";
 const PaymentHistoryCard = ({ item }) => {
   console.log(item);
-  const { courseName, date, image, price, email } = item;
+  const { courseName, date, image, price ,instructorName} = item;
   return (
     <div className="card  bg-base-100  h-[70%] w-[20vw] shadow-xl mt-auto mx-auto">
       <figure className="">
@@ -9,6 +9,7 @@ const PaymentHistoryCard = ({ item }) => {
       </figure>
       <div className="card-body">
         <h2 className="card-title font-semibold">{courseName}</h2>
+        <h2 className="card-title font-semibold">Instructor : {instructorName}</h2>
         <div className="badge badge-secondary h-12 font-semibold">
           Payment Time: {moment(date).format("h:mm:ss a")}
         </div>
