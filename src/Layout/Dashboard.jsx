@@ -35,7 +35,7 @@ const Dashboard = () => {
   
     
     <Navbar></Navbar>
-    <div className="drawer lg:drawer-open   bg-gradient-to-r from-indigo-200 via-purple-200 to-pink-200 language-font">
+    <div className="drawer lg:drawer-open   language-font">
       <input id="my-drawer-2" type="checkbox" className="drawer-toggle"/>
       <div className="drawer-content flex flex-col items-center justify-center  ">
         {/* Page content here */}
@@ -61,7 +61,7 @@ const Dashboard = () => {
       </div>
       <div className="drawer-side">
         <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
-        <ul className="menu  w-70 h-full bg-base-200 text-base-content  text-xl flex justify-center bg-gradient-to-r from-indigo-200 via-purple-200 to-pink-200 ">
+        <ul className="menu  w-70 h-full bg-base-200 text-base-content  text-xl flex justify-center  ">
           {/*-----Sidebar content here----*/}
 
           {isVerify == "admin" ? (

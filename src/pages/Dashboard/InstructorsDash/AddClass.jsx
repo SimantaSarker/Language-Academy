@@ -42,7 +42,7 @@ const AddClass = () => {
   }
 
   return (
-    <div className="w-full h-full flex items-center bg-gradient-to-r from-indigo-200 via-purple-200 to-pink-200 rounded ">
+    <div className="w-full h-full flex items-center  rounded ">
       <div className="flex-col mx-auto w-full  ">
         <form className="card-body" onSubmit={handleAddClass}>
           <div className="flex gap-4">
