@@ -154,9 +154,9 @@ const Navbar = () => {
         </div>
       )}
 
-      <label className="swap swap-rotate px-4" onChange={handleToggle}>
+      <label className="swap swap-rotate px-4">
         {/* this hidden checkbox controls the state */}
-        <input type="checkbox" />
+        <input type="checkbox" onChange={handleToggle} checked={theme==="light" ? false : true } />
 
         <svg
           className="swap-on fill-current w-10 h-10"
