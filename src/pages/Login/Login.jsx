@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../provider/AuthProvider";
 import { useContext, useState } from "react";
 import Swal from "sweetalert2";
+import '../Login/login.css'
 
 const Login = () => {
 
@@ -46,13 +47,13 @@ const Login = () => {
 
   return (
     <>
-      <div className="hero min-h-screen bg-base-200">
-        <div className="hero-content flex-col md:flex-row-reverse">
-          <div className="card flex-shrink-0 max-w-sm shadow-2xl bg-base-100 w-1/2">
-          <form className="card-body" onSubmit={handleSubmit(onSubmit)}>
+      <div className="hero min-h-screen login">
+        <div className="hero-content">
+          <div className="card flex-shrink-0 shadow-2xl  w-[30vw]">
+          <form className="card-body " onSubmit={handleSubmit(onSubmit)}>
               <div className="form-control">
                 <label className="label">
-                  <span className="label-text">Email</span>
+                  <span className="label-text text-xl font-semibold">Email</span>
                 </label>
                 <input
                   type="email"
@@ -67,7 +68,7 @@ const Login = () => {
 
               <div className="form-control">
                 <label className="label">
-                  <span className="label-text">Password</span>
+                  <span className="label-text text-xl font-semibold">Password</span>
                 </label>
                 <input
                   type="password"
@@ -80,10 +81,10 @@ const Login = () => {
                 )}
               </div>
 
-              <div className="form-control mt-6">
+              <div className="form-control mt-6 " >
                 <input
                   type="submit"
-                  className="btn btn-primary"
+                  className="btn bg-[#B5ED5E] text-xl font-semibold"
                   value="Login"
                 />
               </div>
@@ -105,14 +106,7 @@ const Login = () => {
             <SocialLogin></SocialLogin>
           </div>
 
-          <div className="text-center lg:text-left w-1/2">
-            <h1 className="text-5xl font-bold">Login now!</h1>
-            <p className="py-6">
-              Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda
-              excepturi exercitationem quasi. In deleniti eaque aut repudiandae
-              et a id nisi.
-            </p>
-          </div>
+       
         </div>
       </div>
     </>

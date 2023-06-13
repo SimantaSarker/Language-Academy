@@ -35,7 +35,7 @@ const Dashboard = () => {
   
     
     <Navbar></Navbar>
-    <div className="drawer lg:drawer-open   bg-gradient-to-r from-indigo-200 via-purple-200 to-pink-200">
+    <div className="drawer lg:drawer-open   bg-gradient-to-r from-indigo-200 via-purple-200 to-pink-200 language-font">
       <input id="my-drawer-2" type="checkbox" className="drawer-toggle"/>
       <div className="drawer-content flex flex-col items-center justify-center  ">
         {/* Page content here */}

@@ -40,7 +40,7 @@ const ManageClasses = () => {
   };
 
   return (
-    <div className="overflow-x-auto w-full mx-auto">
+    <div className="overflow-x-auto w-full mx-auto language-font">
       <table className="table">
         <thead>
           <tr>

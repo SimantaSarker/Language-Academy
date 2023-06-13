@@ -72,7 +72,7 @@ const ManageUsers = () => {
 
    
 
-      <div className="overflow-x-auto ">
+      <div className="overflow-x-auto language-font">
         <table className="table">
           <thead>
             <tr>

@@ -3,10 +3,10 @@ const Language = () => {
   return (
     <div className="language-font  mt-16 ">
       <>
-        <h1 className="text-center week text-5xl text-red-600 mb-12">
+        <h1 className="text-center week text-5xl text-black mb-12">
           Specific Language Lessons
         </h1>
-        <div className="grid sm:grid-cols-4 md:grid-cols-4 lg:grid-cols-4 mt-4 p-10  gap-12">
+        <div className="grid sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 mt-4 p-10  gap-12">
           <div className="">
             <div className="overflow-hidden relative  hover:translate-y-2 transition duration-200">
               <img
