@@ -96,7 +96,7 @@ const [isVerify]=useVerify();
               />
             </div>
           </label>
-          <a className="btn btn-ghost normal-case text-2xl"> Learn Language</a>
+          <a className="btn btn-ghost normal-case text-2xl">Language Academy</a>
         </div>
       </div>
       <div className="navbar-center hidden lg:flex">

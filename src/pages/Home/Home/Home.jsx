@@ -1,4 +1,5 @@
 import Language from "../Language/Language";
+import PopularClass from "../PopularClass/PopularClass";
 import Slider from "../Slider/Slider";
 
 const Home = () => {
@@ -6,6 +7,7 @@ const Home = () => {
     <div>
       <Slider></Slider>
       <Language></Language>
+      <PopularClass></PopularClass>
     </div>
   );
 };

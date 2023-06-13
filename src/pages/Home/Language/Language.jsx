@@ -1,7 +1,7 @@
 import "../Language/Language.css";
 const Language = () => {
   return (
-    <div className="language-font max-w-7xl mx-auto mt-16 ">
+    <div className="language-font  mt-16 ">
       <>
         <h1 className="text-center week text-5xl text-red-600 mb-12">
           Specific Language Lessons
