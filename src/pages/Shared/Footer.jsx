@@ -2,17 +2,12 @@ import { FaInstagram} from "react-icons/fa";
 
 const Footer = () => {
   return (
-    <div className="language-font">
-      <footer className="footer p-10   text-xl  text-[#211f19]">
+    <div className="language-font mb-8 rounded">
+      <footer className="footer p-10   text-xl  text-[#211f19] bg-[#c0adad] ">
         <div className="items-center md:flex flex-row">
-          <div className="w-24 rounded">
-            <img
-              src="https://images.unsplash.com/photo-1575936123452-b67c3203c357?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8aW1hZ2V8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60"
-              className="object-cover"
-            />
-          </div>
+       
           <div className="text-xl flex flex-col">
-            <div className="md:flex">
+            <div className="md:flex mb-2">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -35,7 +30,7 @@ const Footer = () => {
 
               <span> level 3,Niketan,Gulshan,Dhaka</span>
             </div>
-            <div className="md:flex">
+            <div className="md:flex mt-2">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -52,7 +47,7 @@ const Footer = () => {
               </svg>
               <p className="ms-1">simantasarker0000@gmail.com</p>
             </div>
-            <div className="md:flex ">
+            <div className="md:flex mt-2">
               <div className="md:place-self-center md:justify-self-end ">
                 <div className="grid grid-flow-col gap-4 ">
                   <a>
@@ -105,7 +100,15 @@ const Footer = () => {
           <a className="link link-hover">Privacy policy</a>
           <a className="link link-hover">Cookie policy</a>
         </div>
+
+
+
+
       </footer>
+
+      <div>
+        <p className="text-xl text-center h-20 mt-auto bg-[#c6b2b2] ">Copyright @ 2023  by Language Academy</p>
+        </div>
     </div>
   );
 };

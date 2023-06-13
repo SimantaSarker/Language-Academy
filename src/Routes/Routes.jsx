@@ -18,6 +18,7 @@ import InstructorsRoutes from "./InstructorsRoutes";
 import FeedBack from "../pages/Dashboard/Admin/FeedBack";
 import MyEnrolled from "../pages/Dashboard/Students/MyEnrolled";
 import Payment from "../pages/Payment/Payment";
+import ErrorPage from "../pages/ErrorPage/ErrorPage";
 
 
 
@@ -26,6 +27,7 @@ const router=createBrowserRouter([
 {
   path:"/",
   element:<Main></Main>,
+  errorElement:<ErrorPage></ErrorPage>,
   children:[
     {
       path:"/",
@@ -52,6 +54,7 @@ const router=createBrowserRouter([
 {
   path:"/dashboard",
   element:<PrivateRoutes><Dashboard></Dashboard></PrivateRoutes>,
+  errorElement:<ErrorPage></ErrorPage>,
   children:[
     // student Routes
     {

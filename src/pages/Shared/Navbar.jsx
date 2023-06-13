@@ -34,7 +34,7 @@ const Navbar = () => {
 
   return (
     <div
-      className="navbar bg-white z-10 sticky top-0 rounded language-font"
+      className="navbar  z-10 sticky top-0 rounded language-font"
       style={{ boxShadow: "0 3px 5px rgba(0, 0, 0, 0.6)" }}
     >
       <div className="navbar-start">
@@ -155,7 +155,6 @@ const Navbar = () => {
       )}
 
       <label className="swap swap-rotate px-4">
-        {/* this hidden checkbox controls the state */}
         <input type="checkbox" onChange={handleToggle} checked={theme==="light" ? false : true } />
 
         <svg
