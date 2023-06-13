@@ -4,11 +4,11 @@ import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../provider/AuthProvider";
 import { useContext, useState } from "react";
 import Swal from "sweetalert2";
-import '../Login/login.css'
+import "../Login/login.css";
 const SignUp = () => {
   const { createUser, updateUserProfile } = useContext(AuthContext);
   const navigate = useNavigate();
- const [error,setError]=useState("");
+  const [error, setError] = useState("");
 
   const {
     register,
@@ -32,43 +32,43 @@ const SignUp = () => {
 
         updateUserProfile(data.name, data.photo)
           .then(() => {
-            const saveUser = { name: data.name, email: data.email,photo:photo };
-            fetch('http://localhost:5000/users',{
-              method:"POST",
-              headers:{
-                "content-type":"application/json"
+            const saveUser = {
+              name: data.name,
+              email: data.email,
+              photo: photo,
+            };
+            fetch("http://localhost:5000/users", {
+              method: "POST",
+              headers: {
+                "content-type": "application/json",
               },
-              body:JSON.stringify(saveUser)
+              body: JSON.stringify(saveUser),
             })
-            .then((res)=>res.json()).then((data)=>{
-              if(data.insertedId)
-              {
-               
-                Swal.fire({
-                  position: 'center',
-                  icon: 'success',
-                  title: 'User added Successfully',
-                  showConfirmButton: false,
-                  timer: 1500
-                })
-                navigate("/");
-                reset();
-              }
-            })
-
-          
+              .then((res) => res.json())
+              .then((data) => {
+                if (data.insertedId) {
+                  Swal.fire({
+                    position: "center",
+                    icon: "success",
+                    title: "User added Successfully",
+                    showConfirmButton: false,
+                    timer: 1500,
+                  });
+                  navigate("/");
+                  reset();
+                }
+              });
           })
           .catch((error) => console.log(error));
       })
       .catch((error) => {
-        setError(error.message)
+        setError(error.message);
       });
   };
 
   return (
     <div className="bg-base-200 login p-9">
       <div className="flex  items-center justify-center">
-     
         <div className="card  w-[40vw] shadow-2xl ">
           <form className="card-body" onSubmit={handleSubmit(onSubmit)}>
             <div className="form-control">
@@ -118,7 +118,7 @@ const SignUp = () => {
                 <span className="label-text">Password</span>
               </label>
               <input
-                type="text"
+                type="password"
                 {...register("password", {
                   required: true,
                   minLength: 6,
@@ -128,6 +128,7 @@ const SignUp = () => {
                 placeholder="password"
                 className="input input-bordered"
               />
+
               {errors.password?.type === "required" && (
                 <span className="text-red-900">Password is required</span>
               )}
@@ -154,10 +155,10 @@ const SignUp = () => {
 
             <div className="form-control">
               <label className="label">
-              <span className="label-text">Confirm Password</span>
-                </label>
+                <span className="label-text">Confirm Password</span>
+              </label>
               <input
-               className="input input-bordered"
+                className="input input-bordered"
                 type="password"
                 {...register("confirmPassword", {
                   required: "This field is required",
