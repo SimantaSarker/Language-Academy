@@ -22,7 +22,7 @@ const {data:cart=[],refetch } = useQuery({
   },
 
 })
-console.log(cart)
+
 return [cart,refetch]
 
 }

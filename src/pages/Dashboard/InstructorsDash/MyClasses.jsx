@@ -12,11 +12,11 @@ const MyClasses = () => {
     return res.data;
   });
 
-  console.log("Courses", courses);
+
 
   return (
     <div className="absolute top-0 w-[85%] mt-5">
-      <div className="overflow-x-auto  w-[80%]  mx-auto">
+      <div className="overflow-x-auto    mx-auto">
         <table className="table">
           {/* head */}
           <thead>

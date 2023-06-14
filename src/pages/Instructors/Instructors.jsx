@@ -6,7 +6,7 @@ const Instructors = () => {
     queryKey: ["isInstructors"],
     queryFn: async () => {
       const response = await axios.get(
-        "http://localhost:5000/users/instructors"
+        "https://server-side-mu.vercel.app/users/instructors"
       );
       return response.data;
     },
@@ -14,7 +14,7 @@ const Instructors = () => {
   // bg-gradient-to-r from-indigo-200 via-purple-200 to-pink-200
   return (
     <div className="w-full mx-auto  language-font ">
-      <div className="overflow-x-auto text-center " >
+      <div className="overflow-x-auto text-center ">
         <table className="table mx-auto w-[70%] mt-8 mb-8 bg-black-200 border-4">
           <thead>
             <tr className="bg-[#25BE9E]">
@@ -31,10 +31,7 @@ const Instructors = () => {
                 <td>
                   <div className="avatar">
                     <div className="mask mask-squircle w-20 h-16">
-                      <img
-                        src={instructor?.photo}
-                        alt="Photo"
-                      />
+                      <img src={instructor?.photo} alt="Photo" />
                     </div>
                   </div>
                 </td>

@@ -1,50 +1,40 @@
-import { useEffect, useContext } from 'react';
-import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
-import { AuthContext } from '../provider/AuthProvider';
+import { useEffect, useContext } from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../provider/AuthProvider";
 
-
-
-const axiosSecure=axios.create({
-  baseURL:"http://localhost:5000"
-})
-
+const axiosSecure = axios.create({
+  baseURL: "https://server-side-mu.vercel.app",
+});
 
 const useAxiosSecure = () => {
   const navigate = useNavigate();
-  const {LogOut} = useContext(AuthContext);
-
-
+  const { LogOut } = useContext(AuthContext);
 
   useEffect(() => {
-    axiosSecure.interceptors.request.use(
-      (config) => {
-        const  token = localStorage.getItem('access-token');
-        if ( token) {
-          config.headers.Authorization = `Bearer ${ token}`;
-        }
-        return config;
+    axiosSecure.interceptors.request.use((config) => {
+      const token = localStorage.getItem("access-token");
+      if (token) {
+        config.headers.Authorization = `Bearer ${token}`;
       }
-    );
+      return config;
+    });
 
     // Interceptor for handling 401 and 403 responses
     axiosSecure.interceptors.response.use(
       (response) => response,
-    async  (error) => {    
-        if (error.response.status=== 401 || error.response.status === 403) {
+      async (error) => {
+        if (error.response.status === 401 || error.response.status === 403) {
           // Call logout asynchronously and redirect to login page
-            await LogOut();
+          await LogOut();
 
-            navigate('/login');
-            
+          navigate("/login");
         }
-      
+
         return Promise.reject(error);
       }
     );
-
-
-  }, [LogOut,navigate,axiosSecure]);
+  }, [LogOut, navigate, axiosSecure]);
 
   return [axiosSecure];
 };

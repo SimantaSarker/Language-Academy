@@ -14,8 +14,7 @@ const ManageClasses = () => {
   // admin approve ,deny
 
   const handleApproveDeny = (status, id) => {
-
-    fetch(`http://localhost:5000/courses/${id}`, {
+    fetch(`https://server-side-mu.vercel.app/courses/${id}`, {
       method: "PATCH",
       headers: {
         "content-type": "application/json",

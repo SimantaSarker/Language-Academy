@@ -6,7 +6,6 @@ import Swal from "sweetalert2";
 const SelectedClasses = () => {
   const [cart, refetch] = useCart();
 
-  console.log(cart);
   const handleDelete = (item) => {
     Swal.fire({
       title: "Are you sure want to delete?",
@@ -18,7 +17,7 @@ const SelectedClasses = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed)
-        fetch(`http://localhost:5000/carts/${item?._id}`, {
+        fetch(`https://server-side-mu.vercel.app/carts/${item?._id}`, {
           method: "DELETE",
           headers: {
             "content-type": "application/json",

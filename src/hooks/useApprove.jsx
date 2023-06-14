@@ -2,11 +2,12 @@ import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 
 const useApprove = () => {
-
-  const { data: isApprove=[], isLoading: isApproveLoading } = useQuery({
+  const { data: isApprove = [], isLoading: isApproveLoading } = useQuery({
     queryKey: ["isApprove"],
     queryFn: async () => {
-      const response = await axios.get("http://localhost:5000/courses/approve");
+      const response = await axios.get(
+        "https://server-side-mu.vercel.app/courses/approve"
+      );
       return response.data;
     },
   });

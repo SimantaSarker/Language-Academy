@@ -37,7 +37,7 @@ const SignUp = () => {
               email: data.email,
               photo: photo,
             };
-            fetch("http://localhost:5000/users", {
+            fetch("https://server-side-mu.vercel.app/users", {
               method: "POST",
               headers: {
                 "content-type": "application/json",

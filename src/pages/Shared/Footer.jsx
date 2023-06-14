@@ -28,7 +28,7 @@ const Footer = () => {
                 />
               </svg>
 
-              <span> level 3,Niketan,Gulshan,Dhaka</span>
+              <span> Level 3,Niketan,Gulshan,Dhaka</span>
             </div>
             <div className="md:flex mt-2">
               <svg

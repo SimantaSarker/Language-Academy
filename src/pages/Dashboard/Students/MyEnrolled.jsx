@@ -7,7 +7,7 @@ const MyEnrolled = () => {
   const { user } = useContext(AuthContext);
   const [axiosSecure] = useAxiosSecure();
 
-  console.log(user.email);
+
 
   const { data: enrolled = [] } = useQuery({
     queryKey: ["enrolled", user?.email],

@@ -24,7 +24,7 @@ const ClassCard = ({ card }) => {
         instructorName,
         email: user?.email,
       };
-      fetch("http://localhost:5000/carts", {
+      fetch("https://server-side-mu.vercel.app/carts", {
         method: "POST",
         headers: {
           "content-type": "application/json",

@@ -5,7 +5,7 @@ const PopularClass = () => {
   const [popular, setPopular] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/popular")
+    fetch("https://server-side-mu.vercel.app/popular")
       .then((res) => res.json())
       .then((data) => setPopular(data));
   }, []);
@@ -17,8 +17,9 @@ const PopularClass = () => {
       </h1>
 
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
-      {popular.map((item)=><PopularCard key={item._id} item={item}></PopularCard>)}
-
+        {popular.map((item) => (
+          <PopularCard key={item._id} item={item}></PopularCard>
+        ))}
       </div>
     </div>
   );

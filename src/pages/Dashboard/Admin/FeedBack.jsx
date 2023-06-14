@@ -16,7 +16,6 @@ const FeedBack = () => {
     const form=event.target;
     const feedback=event.target.feedback.value;
       axiosSecure.patch(`/courses/feedback/${id}`,{feedback}).then((res)=>{
-        console.log(res)
         if (res.data.modifiedCount>0) {
           Swal.fire({
             position: 'center',
