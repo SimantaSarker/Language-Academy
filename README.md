@@ -12,6 +12,8 @@
 - If available seats are zero then can't select the class.The class will be disabled select button with red background.Based on user role dashboard change.
 - Popular classes are shown based on enrolled students in popular section.Navbar and dashboard are conditional if user logged in then show profile picture with logout button and dashboard.
   Live Site : https://assignment-12-c7c47.web.app/
+- admin mail:simantasarker0000@gmail.com
+-pass:12345678Ab1@
 
 # Used Package/Technology
 
